@@ -23,8 +23,11 @@ public class CityListTest {
         City city = new City("Regina", "SK");
         cityList.add(city);
 
-        assertEquals(2, cityList.getCities().size());
-        assertTrue(cityList.getCities().contains(city));
+        City city1 = new City("AB","Dhaka");
+        cityList.add(city);
+
+        assertEquals(2, cityList.getCities().size()); //total city thik ache kina
+        assertTrue(cityList.getCities().contains(city)); //city ta asolei citylist e ache kina
     }
 
     @Test
@@ -48,5 +51,18 @@ public class CityListTest {
 
         assertEquals(0, city.compareTo(cityList.getCities().get(0)));
         assertEquals(0, mockCity().compareTo(cityList.getCities().get(1)));
+    }
+
+    @Test
+    public void testDelete(){
+        CityList cityList = new CityList();
+        City city = new City("Jeshore","Khulna");
+        City city1 = new City("Mirpur","Dhaka");
+        cityList.add(city);
+        cityList.add(city1);
+
+
+        cityList.delete(city);
+        assertTrue(!cityList.getCities().contains(city));
     }
 }
